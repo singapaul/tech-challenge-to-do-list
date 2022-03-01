@@ -4,10 +4,17 @@
 }
 
 // just to see where everything is
-h1, nav, div, footer{border: solid 2px black;}
+h1,
+nav,
+div,
+footer {
+  border: solid 2px black;
+}
 
-body{height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-between;}
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
