@@ -8,7 +8,7 @@ const nameInputField = document.querySelector(".inputField");
 const toDoListContents = document.querySelector(".toDoContents")
 const toDoListFooter = document.querySelector(".toDoFunctions")
 const resetButton = document.querySelector(".resetButton");
-// targetting our newly popped up buttons
+const submitTaskButton = document.querySelector(".submitButton");
 
 // delete button to appear in footer later
 // const deleteButton =
@@ -18,8 +18,18 @@ const resetButton = document.querySelector(".resetButton");
 // adding a keydown function
 // So when I press enter I want that box and form to submit and a new one to appear
 
+const addListItem = () => {
+  console.log(InputFieldBox.value);
+  toDoListContents.innerHTML += `<div class=toDoItem>
+  <input type="checkbox">
+  <p>Input Text</p>
+  <button type="button">@</button>
+  </div>`
+}
+
 // Get element value
 const whatIsYourNameFunction = (evnt) => {
+  const arrayOutput = [];
   if (evnt.keyCode === 13) {
     evnt.preventDefault();
     console.log(nameInputField.value)
@@ -31,13 +41,29 @@ const whatIsYourNameFunction = (evnt) => {
     <input class=inputField type="text" placeholder="what are we doing today?"></input> <button class="submitButton">+</button></div>`
     toDoListContents.innerHTML = `
     <div class=allTasks><p>Tasks</p>
-    <div class=completedAllTasks><p>All tasks have been completed. Great job! - I will implement this later using a function that counts the number of children in the the todolist - if it is zero this will appear</p></div>
+    <div class=completedAllTasks>
+    <p class=placeholder>All tasks have been completed. Great job! - I will implement this later using a function that counts the number of children in the the todolist - if it is zero this will appear</p>
+    </div>
     </div>
     `;
+    // There must be a better way to write this?
+    const submitTaskButton = document.querySelector(".submitButton");
+    arrayOutput.push(submitTaskButton);
+
+    const placeholderText = document.querySelector(".placeholder");
+    arrayOutput.push(placeholderText);
+
+    const InputFieldBox = document.querySelector(".inputField");
+    arrayOutput.push(InputFieldBox);
+
+    submitTaskButton.addEventListener("click", addListItem);
+
+
   } else {
     console.log("no")
     return
   }
+  return arrayOutput;
 }
 
 
@@ -64,8 +90,8 @@ const resetHTML = () => {
 
 nameInputField.addEventListener("keyup", whatIsYourNameFunction);
 
-
 resetButton.addEventListener("click", resetHTML);
 
 // next job is to make the input box have functionality 
+
 
